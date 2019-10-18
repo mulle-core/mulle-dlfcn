@@ -1,3 +1,6 @@
+#ifndef mulle_dlfcn_h__
+#define mulle_dlfcn_h__
+
 #include "include.h"
 
 #include <stdint.h>
@@ -7,7 +10,7 @@
  *
  *  version:  major, minor, patch
  */
-#define MULLE_DLFCN_VERSION  ((0 << 20) | (0 << 8) | 1)
+#define MULLE_DLFCN_VERSION  ((0 << 20) | (0 << 8) | 2)
 
 
 static inline unsigned int   mulle_dlfcn_get_version_major( void)
@@ -30,9 +33,20 @@ static inline unsigned int   mulle_dlfcn_get_version_patch( void)
 
 extern uint32_t   mulle_dlfcn_get_version( void);
 
-/*
-   Add other library headers here like so, for exposure to library
-   consumers.
 
-   # include "foo.h"
-*/
+
+#ifdef RTLD_DEFAULT
+# define MULLE_RTLD_DEFAULT    RTLD_DEFAULT
+#else
+# ifdef __linux__
+#  define MULLE_RTLD_DEFAULT   0
+# else
+#  ifdef __APPLE__
+#   define RTLD_DEFAULT    ((void *) -2)
+#  else
+#   error "need to define MULLE_RTLD_DEFAULT on this platform"
+#  endif
+# endif
+#endif
+
+#endif

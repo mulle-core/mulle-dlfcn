@@ -7,6 +7,14 @@
 #ifndef _mulle_dlfcn_include_private_h__
 #define _mulle_dlfcn_include_private_h__
 
-/* no headers */
+// library: remove with `mark no-header`, rename with `set include`
+# if defined( _WIN32)
+# ifdef __has_include
+#  if __has_include(<psapi.h>)
+#    include <psapi.h>   // psapi
+#   define HAVE_LIB_PSAPI
+#  endif
+# endif
+# endif
 
 #endif
