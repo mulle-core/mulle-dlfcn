@@ -55,3 +55,29 @@ if( NOT ${CMAKE_SYSTEM_NAME} MATCHES "Windows")
       endif()
    endif()
 endif()
+
+
+# sourcetree: PSAPI;no-all-load,no-cmakeinherit,no-import,no-public,no-require,only-os-mingw;
+if( ${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+   if( NOT PSAPI_LIBRARY)
+      find_library( PSAPI_LIBRARY NAMES psapi)
+      message( STATUS "PSAPI_LIBRARY is ${PSAPI_LIBRARY}")
+      #
+      # the order looks ascending, but due to the way this file is read
+      # it ends up being descending, which is what we need
+      if( PSAPI_LIBRARY)
+         #
+         # Add to PSAPI_LIBRARY list.
+         # Disable with: `mark no-cmakeadd`
+         #
+         set( OS_SPECIFIC_LIBRARIES
+            ${OS_SPECIFIC_LIBRARIES}
+            ${PSAPI_LIBRARY}
+            CACHE INTERNAL "need to cache this"
+         )
+         # intentionally left blank
+      else()
+         message( STATUS "PSAPI_LIBRARY is missing but it is marked as \"no-require\"")
+      endif()
+   endif()
+endif()
