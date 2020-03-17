@@ -20,6 +20,10 @@
    Here the prefix is harmless and serves disambiguation. If you have no
    sourcetree, then you don't need it.
  */
+#ifdef _WIN32
+# define WIN32_LEAN_AND_MEAN
+# include <windows.h>  // need this for PSAPI
+#endif
 
 #include "_mulle-dlfcn-include-private.h"
 
