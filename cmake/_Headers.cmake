@@ -16,5 +16,6 @@ src/include-private.h
 set( PUBLIC_HEADERS
 src/include.h
 src/mulle-dlfcn.h
+src/mulle-dlfcn-windows.h
 )
 
