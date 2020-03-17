@@ -10,7 +10,7 @@
  *
  *  version:  major, minor, patch
  */
-#define MULLE_DLFCN_VERSION  ((0 << 20) | (0 << 8) | 2)
+#define MULLE_DLFCN_VERSION  ((0 << 20) | (0 << 8) | 3)
 
 
 static inline unsigned int   mulle_dlfcn_get_version_major( void)
@@ -34,6 +34,10 @@ static inline unsigned int   mulle_dlfcn_get_version_patch( void)
 extern uint32_t   mulle_dlfcn_get_version( void);
 
 
+
+#ifdef _WIN32 
+# include "mulle-dlfcn-windows.h"
+#endif
 
 #ifdef RTLD_DEFAULT
 # define MULLE_RTLD_DEFAULT    RTLD_DEFAULT
