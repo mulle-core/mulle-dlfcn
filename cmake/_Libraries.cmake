@@ -21,7 +21,7 @@ if( NOT (${CMAKE_SYSTEM_NAME} MATCHES "Windows" OR ${CMAKE_SYSTEM_NAME} MATCHES 
       #
       if( DL_LIBRARY)
          #
-         # Add to DL_LIBRARY to OS_SPECIFIC_LIBRARIES list.
+         # Add DL_LIBRARY to OS_SPECIFIC_LIBRARIES list.
          # Disable with: `mulle-sourcetree mark dl no-cmakeadd`
          #
          set( OS_SPECIFIC_LIBRARIES
@@ -51,7 +51,7 @@ if( ${CMAKE_SYSTEM_NAME} MATCHES "Windows" OR ${CMAKE_SYSTEM_NAME} MATCHES "Wind
       #
       if( PSAPI_LIBRARY)
          #
-         # Add to PSAPI_LIBRARY to OS_SPECIFIC_LIBRARIES list.
+         # Add PSAPI_LIBRARY to OS_SPECIFIC_LIBRARIES list.
          # Disable with: `mulle-sourcetree mark psapi no-cmakeadd`
          #
          set( OS_SPECIFIC_LIBRARIES
