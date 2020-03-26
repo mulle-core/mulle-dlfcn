@@ -1,3 +1,7 @@
+### 0.0.4
+
+* added a small test to check that it links at least
+
 ### 0.0.3
 
 * Various small improvements

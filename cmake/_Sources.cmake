@@ -7,6 +7,9 @@ endif()
 
 set( SOURCES
 src/mulle-dlfcn.c
-src/mulle-dlfcn-standalone.c
 src/mulle-dlfcn-windows.c
+)
+
+set( STANDALONE_SOURCES
+src/mulle-dlfcn-standalone.c
 )
