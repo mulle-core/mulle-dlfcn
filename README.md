@@ -4,10 +4,11 @@
 
 
 This is an empty project that provides link instructions for consumers
-of the "dlfcn" on various platforms.
+of the "dlfcn" on various platforms. It also provides the
+`MULLE_RTLD_DEFAULT` define, which is what one generally wants to use when
+looking up symbols with `dlysm`.
 
-It also provides a mulle-dlfcn header. It will also produce an empty library,
-which you need not link against.
+`mulle-dlfcn` is an empty library, which you need not link against.
 
 
 ## How to add
