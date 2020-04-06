@@ -15,6 +15,7 @@
 // How to tweak the following dl #include
 //    remove:          `mulle-sourcetree mark dl no-header`
 //    rename:          `mulle-sourcetree mark dl set include whatever.h`
+//    toggle #import:  `mulle-sourcetree mark dl [no-]import`
 //    toggle public:   `mulle-sourcetree mark dl [no-]public`
 //    toggle optional: `mulle-sourcetree mark dl [no-]require`
 //    remove for os:   `mulle-sourcetree mark dl no-os-<osname>`

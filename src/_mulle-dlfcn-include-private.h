@@ -15,6 +15,7 @@
 // How to tweak the following psapi #include
 //    remove:          `mulle-sourcetree mark psapi no-header`
 //    rename:          `mulle-sourcetree mark psapi set include whatever.h`
+//    toggle #import:  `mulle-sourcetree mark psapi [no-]import`
 //    toggle public:   `mulle-sourcetree mark psapi [no-]public`
 //    toggle optional: `mulle-sourcetree mark psapi [no-]require`
 //    remove for os:   `mulle-sourcetree mark psapi no-os-<osname>`
