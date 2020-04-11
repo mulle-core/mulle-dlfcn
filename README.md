@@ -11,27 +11,43 @@ looking up symbols with `dlysm`.
 `mulle-dlfcn` is an empty library, which you need not link against.
 
 
-## How to add
+## Add 
 
+Use [mulle-sde](//github.com/mulle-sde) to add mulle-dlfcn to your project:
+
+```
 mulle-sde dependency add --c \
                          --github mulle-core \
                          --marks no-link,no-singlephase \
                          mulle-dlfcn
-
-## How to build
-
-This is a [mulle-sde](https://mulle-sde.github.io/) project.
-
-It has it's own virtual environment, that will be automatically setup for you
-once you enter it with:
-
-```
-mulle-sde mulle-dlfcn
 ```
 
-Now you can let **mulle-sde** fetch the required dependencies and build the
-project for you:
+
+## Install
+
+### mulle-sde
+
+Use [mulle-sde](//github.com/mulle-sde) to build and install mulle-dlfcn and all dependencies:
 
 ```
-mulle-sde craft
+mulle-sde install --prefix /usr/local \
+   https://github.com/mulle-core/mulle-dlfcn/archive/latest.tar.gz
 ```
+
+### Manual Installation
+
+Install into `/usr/local`:
+
+```
+mkdir build 2> /dev/null
+(
+   cd build ;
+   cmake -DCMAKE_INSTALL_PREFIX=/usr/local \
+         -DCMAKE_PREFIX_PATH=/usr/local \
+         -DCMAKE_BUILD_TYPE=Release .. ;
+   make install
+)
+```
+
+
+
