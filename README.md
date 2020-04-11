@@ -10,7 +10,9 @@ It also provides a mulle-dlfcn header. It will also produce an empty library,
 which you need not link against.
 
 
-## How to add
+## Add 
+
+Use [mulle-sde](//github.com/mulle-sde) to add mulle-dlfcn to your project:
 
 ```
 mulle-sde dependency add --c \
@@ -19,26 +21,19 @@ mulle-sde dependency add --c \
                          mulle-dlfcn
 ```
 
-## How to build
 
-This is a [mulle-sde](https://mulle-sde.github.io/) project.
+## Install
 
-It has it's own virtual environment, that will be automatically setup for you
-once you enter it with:
+### mulle-sde
 
-```
-mulle-sde mulle-dlfcn
-```
-
-Now you can let **mulle-sde** fetch the required dependencies and build the
-project for you:
+Use [mulle-sde](//github.com/mulle-sde) to build and install mulle-dlfcn and all dependencies:
 
 ```
-mulle-sde craft
+mulle-sde install --prefix /usr/local \
+   https://github.com/mulle-core/mulle-dlfcn/archive/latest.tar.gz
 ```
 
-
-## Manual Installation
+### Manual Installation
 
 Install into `/usr/local`:
 
