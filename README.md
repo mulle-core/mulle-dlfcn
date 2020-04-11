@@ -12,10 +12,12 @@ which you need not link against.
 
 ## How to add
 
+```
 mulle-sde dependency add --c \
                          --github mulle-core \
                          --marks no-link,no-singlephase \
                          mulle-dlfcn
+```
 
 ## How to build
 
@@ -34,3 +36,22 @@ project for you:
 ```
 mulle-sde craft
 ```
+
+
+## Manual Installation
+
+Install into `/usr/local`:
+
+```
+mkdir build 2> /dev/null
+(
+   cd build ;
+   cmake -DCMAKE_INSTALL_PREFIX=/usr/local \
+         -DCMAKE_PREFIX_PATH=/usr/local \
+         -DCMAKE_BUILD_TYPE=Release .. ;
+   make install
+)
+```
+
+
+
