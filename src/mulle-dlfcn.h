@@ -10,7 +10,7 @@
  *
  *  version:  major, minor, patch
  */
-#define MULLE_DLFCN_VERSION  ((0 << 20) | (0 << 8) | 4)
+#define MULLE_DLFCN_VERSION  ((0 << 20) | (0 << 8) | 5)
 
 
 static inline unsigned int   mulle_dlfcn_get_version_major( void)
