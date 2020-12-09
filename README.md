@@ -1,6 +1,6 @@
 # mulle-dlfcn
 
-♿️ Shared library helper
+#### ♿️ Shared library helper
 
 
 This is an empty project that provides link instructions for consumers
@@ -11,7 +11,7 @@ looking up symbols with `dlysm`.
 `mulle-dlfcn` is an empty library, which you need not link against.
 
 
-## Add 
+## Add
 
 Use [mulle-sde](//github.com/mulle-sde) to add mulle-dlfcn to your project:
 

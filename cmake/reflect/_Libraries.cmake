@@ -8,8 +8,8 @@ if( MULLE_TRACE_INCLUDE)
 endif()
 
 #
-# Generated from sourcetree: dl;no-all-load,no-cmakeinherit,no-import,no-os-mingw,no-os-windows,no-share;dl,dlfcn
-# Disable with: `mulle-sourcetree mark dl no-link`
+# Generated from sourcetree: dl;no-all-load,no-build,no-cmakeinherit,no-delete,no-dependency,no-fs,no-import,no-os-mingw,no-os-windows,no-share,no-update;dl,dlfcn
+# Disable with: `mulle-sourcetree mark dl `
 #
 if( NOT (${CMAKE_SYSTEM_NAME} MATCHES "Windows" OR ${CMAKE_SYSTEM_NAME} MATCHES "Windows"))
    if( NOT DL_LIBRARY)
@@ -38,8 +38,8 @@ endif()
 
 
 #
-# Generated from sourcetree: psapi;no-all-load,no-cmakeinherit,no-import,no-public,no-require,only-os-mingw,only-os-windows;
-# Disable with: `mulle-sourcetree mark psapi no-link`
+# Generated from sourcetree: psapi;no-all-load,no-build,no-cmakeinherit,no-delete,no-dependency,no-fs,no-import,no-public,no-require,no-update,only-os-mingw,only-os-windows;
+# Disable with: `mulle-sourcetree mark psapi `
 #
 if( ${CMAKE_SYSTEM_NAME} MATCHES "Windows" OR ${CMAKE_SYSTEM_NAME} MATCHES "Windows")
    if( NOT PSAPI_LIBRARY)

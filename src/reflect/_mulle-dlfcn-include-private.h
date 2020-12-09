@@ -13,12 +13,13 @@
 #define _mulle_dlfcn_include_private_h__
 
 // How to tweak the following psapi #include
-//    remove:          `mulle-sourcetree mark psapi no-header`
-//    rename:          `mulle-sourcetree mark psapi set include whatever.h`
-//    toggle #import:  `mulle-sourcetree mark psapi [no-]import`
-//    toggle public:   `mulle-sourcetree mark psapi [no-]public`
-//    toggle optional: `mulle-sourcetree mark psapi [no-]require`
-//    remove for os:   `mulle-sourcetree mark psapi no-os-<osname>`
+//    remove:             `mulle-sourcetree mark psapi no-header`
+//    rename:             `mulle-sde dependency|library set psapi include whatever.h`
+//    toggle #import:     `mulle-sourcetree mark psapi [no-]import`
+//    toggle localheader: `mulle-sourcetree mark psapi [no-]localheader`
+//    toggle public:      `mulle-sourcetree mark psapi [no-]public`
+//    toggle optional:    `mulle-sourcetree mark psapi [no-]require`
+//    remove for os:      `mulle-sourcetree mark psapi no-os-<osname>`
 # if defined( _WIN32) || defined( __windows__)
 # ifdef __has_include
 #  if __has_include(<psapi.h>)
