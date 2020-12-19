@@ -1,0 +1,15 @@
+{
+   "name" : "mulle-dlfcn",
+   "version" : "0.0.6",
+   "description" : "♿️ Shared library helper",
+   "homepage" : "https://github.com/mulle-core/mulle-dlfcn",
+   "bugs" : "https://github.com/mulle-core/mulle-dlfcn/issues",
+   "keywords" : [],
+   "license" : "UNLICENSED",
+   "repository" : {
+      "type" : "git",
+      "url" : "mulle-core/mulle-dlfcn"
+   },
+   "dependencies" : {
+   }
+}
