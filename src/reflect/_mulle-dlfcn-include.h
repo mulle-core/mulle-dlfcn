@@ -16,16 +16,11 @@
 //    remove:             `mulle-sourcetree mark dl no-header`
 //    rename:             `mulle-sde dependency|library set dl include whatever.h`
 //    toggle #import:     `mulle-sourcetree mark dl [no-]import`
-//    toggle localheader: `mulle-sourcetree mark dl [no-]localheader`
 //    toggle public:      `mulle-sourcetree mark dl [no-]public`
 //    toggle optional:    `mulle-sourcetree mark dl [no-]require`
 //    remove for os:      `mulle-sourcetree mark dl no-os-<osname>`
 # if ! defined( _WIN32) && ! defined( __windows__)
-#  if defined( __has_include) && __has_include("dlfcn.h")
-#     include "dlfcn.h"   // dl
-#  else
-#     include <dlfcn.h>   // dl
-#  endif
+#  include <dlfcn.h>   // dl
 # endif
 
 #endif

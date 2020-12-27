@@ -16,7 +16,6 @@
 //    remove:             `mulle-sourcetree mark psapi no-header`
 //    rename:             `mulle-sde dependency|library set psapi include whatever.h`
 //    toggle #import:     `mulle-sourcetree mark psapi [no-]import`
-//    toggle localheader: `mulle-sourcetree mark psapi [no-]localheader`
 //    toggle public:      `mulle-sourcetree mark psapi [no-]public`
 //    toggle optional:    `mulle-sourcetree mark psapi [no-]require`
 //    remove for os:      `mulle-sourcetree mark psapi no-os-<osname>`
