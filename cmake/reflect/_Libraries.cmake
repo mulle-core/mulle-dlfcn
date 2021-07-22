@@ -16,7 +16,7 @@ endif()
 #
 # Generated from sourcetree: 3035297A-114F-447F-AA5A-EDF4E3B174B6;dl;no-all-load,no-build,no-cmake-inherit,no-delete,no-dependency,no-fs,no-import,no-platform-mingw,no-platform-windows,no-share,no-update,version-max-darwin-10.99.0;dl,dlfcn
 # Disable with : `mulle-sourcetree mark dl `
-# Disable for this platform: `mulle-sourcetree mark dl no-cmake-platform-linux`
+# Disable for this platform: `mulle-sourcetree mark dl no-cmake-platform-darwin`
 #
 if( NOT ${CMAKE_SYSTEM_NAME} MATCHES "Windows")
    if( NOT DL_LIBRARY)
@@ -48,7 +48,7 @@ endif()
 #
 # Generated from sourcetree: E0AA557E-995A-4BE2-947A-717E07DF1939;psapi;no-all-load,no-build,no-cmake-inherit,no-delete,no-dependency,no-fs,no-import,no-public,no-require,no-update,only-platform-mingw,only-platform-windows;
 # Disable with : `mulle-sourcetree mark psapi `
-# Disable for this platform: `mulle-sourcetree mark psapi no-cmake-platform-linux`
+# Disable for this platform: `mulle-sourcetree mark psapi no-cmake-platform-darwin`
 #
 if( ${CMAKE_SYSTEM_NAME} MATCHES "Windows")
    if( NOT PSAPI_LIBRARY)
