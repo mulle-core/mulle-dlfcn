@@ -16,14 +16,14 @@
 
 // You can tweak the following #include with these commands.
 // (Use 3035297A-114F-447F-AA5A-EDF4E3B174B6 instead of dl if there are duplicate entries)
-//    remove:             `mulle-sourcetree mark dl no-header`
+//    remove:             `mulle-sde dependency mark dl no-header`
 //    rename:             `mulle-sde dependency|library set dl include whatever.h`
-//    reorder:            `mulle-sourcetree move dl <up|down>`
-//    toggle #include:    `mulle-sourcetree mark dl [no-]import`
-//    toggle public:      `mulle-sourcetree mark dl [no-]public`
-//    toggle optional:    `mulle-sourcetree mark dl [no-]require`
-//    remove for platform:`mulle-sourcetree mark dl no-platform-<uname>`
-//        (use mulle-sourcetree-to-c --unames for known values)
+//    reorder:            `mulle-sde dependency move dl <up|down>`
+//    toggle #include:    `mulle-sde dependency mark dl [no-]import`
+//    toggle public:      `mulle-sde dependency mark dl [no-]public`
+//    toggle optional:    `mulle-sde dependency mark dl [no-]require`
+//    remove for platform:`mulle-sde dependency mark dl no-platform-<uname>`
+//        (use `mulle-sourcetree-to-c --unames` to list known values)
 # if ! defined( _WIN32) && ! defined( __windows__)
 # include <dlfcn.h>   // dl
 #endif
