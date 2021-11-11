@@ -16,14 +16,14 @@
 
 // You can tweak the following #include with these commands.
 // (Use E0AA557E-995A-4BE2-947A-717E07DF1939 instead of psapi if there are duplicate entries)
-//    remove:             `mulle-sourcetree mark psapi no-header`
+//    remove:             `mulle-sde dependency mark psapi no-header`
 //    rename:             `mulle-sde dependency|library set psapi include whatever.h`
-//    reorder:            `mulle-sourcetree move psapi <up|down>`
-//    toggle #include:    `mulle-sourcetree mark psapi [no-]import`
-//    toggle public:      `mulle-sourcetree mark psapi [no-]public`
-//    toggle optional:    `mulle-sourcetree mark psapi [no-]require`
-//    remove for platform:`mulle-sourcetree mark psapi no-platform-<uname>`
-//        (use mulle-sourcetree-to-c --unames for known values)
+//    reorder:            `mulle-sde dependency move psapi <up|down>`
+//    toggle #include:    `mulle-sde dependency mark psapi [no-]import`
+//    toggle public:      `mulle-sde dependency mark psapi [no-]public`
+//    toggle optional:    `mulle-sde dependency mark psapi [no-]require`
+//    remove for platform:`mulle-sde dependency mark psapi no-platform-<uname>`
+//        (use `mulle-sourcetree-to-c --unames` to list known values)
 # if defined( _WIN32) || defined( __windows__)
 # ifdef __has_include
 #  if __has_include(<psapi.h>)
