@@ -3,6 +3,8 @@ cmake_minimum_required( VERSION 3.1)
 project( mulle-dlfcn C)
 
 
+add_definitions( -DMULLE_DLFCN_EXTERN_GLOBAL=extern)
+
 ### mulle-sde environment
 
 # add cmake module paths to search path

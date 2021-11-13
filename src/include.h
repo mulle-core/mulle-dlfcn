@@ -1,6 +1,7 @@
 #ifndef mulle_dlfcn_include_h__
 #define mulle_dlfcn_include_h__
 
+
 /* DO:    #include this files in public headers.
 
    DONT:  #include this files in private headers.
@@ -28,6 +29,11 @@
  */
 
 #include "_mulle-dlfcn-include.h"
+
+// could also set MULLE_C_GLOBAL but we use cmake all export
+#ifndef MULLE_DLFCN_EXTERN_GLOBAL
+# define MULLE_DLFCN_EXTERN_GLOBAL MULLE_C_EXTERN_GLOBAL
+#endif
 
 /* You can add some more include statements here */
 
