@@ -12,7 +12,6 @@ endif()
 #
 set( SOURCES
 src/mulle-dlfcn.c
-src/mulle-dlfcn-windows.c
 )
 
 #

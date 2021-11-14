@@ -36,3 +36,77 @@ if( NOT MULLE_C11_HEADER)
       message( FATAL_ERROR "MULLE_C11_HEADER was not found")
    endif()
 endif()
+
+
+
+#
+# Generated from sourcetree: 8D2BE61C-D741-4FCC-8A99-5EB39BBE7A3E;dlfcn-win32;no-all-load,no-cmake-loader,no-cmake-searchpath,no-import,only-platform-mingw,only-platform-windows;dl
+# Disable with : `mulle-sourcetree mark dlfcn-win32 no-link`
+# Disable for this platform: `mulle-sourcetree mark dlfcn-win32 no-cmake-platform-windows`
+#
+if( ${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+   if( NOT DL_LIBRARY)
+      find_library( DL_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}dl${CMAKE_STATIC_LIBRARY_SUFFIX} dl NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)
+      message( STATUS "DL_LIBRARY is ${DL_LIBRARY}")
+      #
+      # The order looks ascending, but due to the way this file is read
+      # it ends up being descending, which is what we need.
+      #
+      if( DL_LIBRARY)
+         #
+         # Add DL_LIBRARY to DEPENDENCY_LIBRARIES list.
+         # Disable with: `mulle-sourcetree mark dlfcn-win32 no-cmake-add`
+         #
+         set( DEPENDENCY_LIBRARIES
+            ${DEPENDENCY_LIBRARIES}
+            ${DL_LIBRARY}
+            CACHE INTERNAL "need to cache this"
+         )
+         #
+         # Inherit information from dependency.
+         # Encompasses: no-cmake-searchpath,no-cmake-dependency,no-cmake-loader
+         # Disable with: `mulle-sourcetree mark dlfcn-win32 no-cmake-inherit`
+         #
+         # temporarily expand CMAKE_MODULE_PATH
+         get_filename_component( _TMP_DL_ROOT "${DL_LIBRARY}" DIRECTORY)
+         get_filename_component( _TMP_DL_ROOT "${_TMP_DL_ROOT}" DIRECTORY)
+         #
+         #
+         # Search for "DependenciesAndLibraries.cmake" to include.
+         # Disable with: `mulle-sourcetree mark dlfcn-win32 no-cmake-dependency`
+         #
+         foreach( _TMP_DL_NAME "dl")
+            set( _TMP_DL_DIR "${_TMP_DL_ROOT}/include/${_TMP_DL_NAME}/cmake")
+            # use explicit path to avoid "surprises"
+            if( EXISTS "${_TMP_DL_DIR}/DependenciesAndLibraries.cmake")
+               unset( DL_DEFINITIONS)
+               list( INSERT CMAKE_MODULE_PATH 0 "${_TMP_DL_DIR}")
+               # we only want top level INHERIT_OBJC_LOADERS, so disable them
+               if( NOT NO_INHERIT_OBJC_LOADERS)
+                  set( NO_INHERIT_OBJC_LOADERS OFF)
+               endif()
+               list( APPEND _TMP_INHERIT_OBJC_LOADERS ${NO_INHERIT_OBJC_LOADERS})
+               set( NO_INHERIT_OBJC_LOADERS ON)
+               #
+               include( "${_TMP_DL_DIR}/DependenciesAndLibraries.cmake")
+               #
+               list( GET _TMP_INHERIT_OBJC_LOADERS -1 NO_INHERIT_OBJC_LOADERS)
+               list( REMOVE_AT _TMP_INHERIT_OBJC_LOADERS -1)
+               #
+               list( REMOVE_ITEM CMAKE_MODULE_PATH "${_TMP_DL_DIR}")
+               set( INHERITED_DEFINITIONS
+                  ${INHERITED_DEFINITIONS}
+                  ${DL_DEFINITIONS}
+                  CACHE INTERNAL "need to cache this"
+               )
+               break()
+            else()
+               message( STATUS "${_TMP_DL_DIR}/DependenciesAndLibraries.cmake not found")
+            endif()
+         endforeach()
+      else()
+         # Disable with: `mulle-sourcetree mark dlfcn-win32 no-require-link`
+         message( FATAL_ERROR "DL_LIBRARY was not found")
+      endif()
+   endif()
+endif()

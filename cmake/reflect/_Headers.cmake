@@ -48,6 +48,5 @@ src/include.h
 #
 set( PUBLIC_HEADERS
 src/mulle-dlfcn.h
-src/mulle-dlfcn-windows.h
 )
 
