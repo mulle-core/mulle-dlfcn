@@ -36,10 +36,10 @@ extern uint32_t   mulle_dlfcn_get_version( void);
 
 
 
-#ifdef _WIN32 
-# include "mulle-dlfcn-windows.h"
-#endif
-
+//#ifdef _WIN32 
+//# include "mulle-dlfcn-windows.h"
+//#endif
+//
 #ifdef RTLD_DEFAULT
 # define MULLE_RTLD_DEFAULT    RTLD_DEFAULT
 #else
