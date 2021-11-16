@@ -14,7 +14,7 @@ endif()
 #
 # Generated from sourcetree: A3ED849C-ECFE-4FB8-8E50-D5245D67E30B;mulle-c11;no-all-load,no-cmake-inherit,no-import,no-link,no-recurse,no-singlephase;
 # Disable with : `mulle-sourcetree mark mulle-c11 no-header`
-# Disable for this platform: `mulle-sourcetree mark mulle-c11 no-cmake-platform-windows`
+# Disable for this platform: `mulle-sourcetree mark mulle-c11 no-cmake-platform-${MULLE_UNAME}`
 #
 if( NOT MULLE_C11_HEADER)
    find_file( MULLE_C11_HEADER NAMES mulle-c11.h mulle-c11/mulle-c11.h)
@@ -40,13 +40,13 @@ endif()
 
 
 #
-# Generated from sourcetree: 8D2BE61C-D741-4FCC-8A99-5EB39BBE7A3E;dlfcn-win32;no-all-load,no-cmake-loader,no-cmake-searchpath,no-import,only-platform-mingw,only-platform-windows;dl
+# Generated from sourcetree: 8D2BE61C-D741-4FCC-8A99-5EB39BBE7A3E;dlfcn-win32;no-all-load,no-cmake-loader,no-cmake-searchpath,no-dynamic-link,no-import,no-intermediate-link,only-platform-mingw,only-platform-windows;dl
 # Disable with : `mulle-sourcetree mark dlfcn-win32 no-link`
-# Disable for this platform: `mulle-sourcetree mark dlfcn-win32 no-cmake-platform-windows`
+# Disable for this platform: `mulle-sourcetree mark dlfcn-win32 no-cmake-platform-${MULLE_UNAME}`
 #
 if( ${CMAKE_SYSTEM_NAME} MATCHES "Windows")
    if( NOT DL_LIBRARY)
-      find_library( DL_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}dl${CMAKE_STATIC_LIBRARY_SUFFIX} dl NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)
+      find_library( DL_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}dl${CMAKE_STATIC_LIBRARY_SUFFIX} NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)
       message( STATUS "DL_LIBRARY is ${DL_LIBRARY}")
       #
       # The order looks ascending, but due to the way this file is read
@@ -54,11 +54,11 @@ if( ${CMAKE_SYSTEM_NAME} MATCHES "Windows")
       #
       if( DL_LIBRARY)
          #
-         # Add DL_LIBRARY to DEPENDENCY_LIBRARIES list.
+         # Add DL_LIBRARY to STARTUP_DEPENDENCY_LIBRARIES list.
          # Disable with: `mulle-sourcetree mark dlfcn-win32 no-cmake-add`
          #
-         set( DEPENDENCY_LIBRARIES
-            ${DEPENDENCY_LIBRARIES}
+         set( STARTUP_DEPENDENCY_LIBRARIES
+            ${STARTUP_DEPENDENCY_LIBRARIES}
             ${DL_LIBRARY}
             CACHE INTERNAL "need to cache this"
          )
