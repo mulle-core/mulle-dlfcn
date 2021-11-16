@@ -2,14 +2,12 @@
 
 #### ♿️ Shared library helper
 
-
 This is an empty project that provides link instructions for consumers
 of the "dlfcn" on various platforms. It also provides the
 `MULLE_RTLD_DEFAULT` define, which is what one generally wants to use when
 looking up symbols with `dlysm`.
 
-`mulle-dlfcn` is an empty library, which you need not link against.
-
+On Windows this will use [dlfcn-win32]() to supply `dlsym` and relatives.
 
 ## Add
 
@@ -18,7 +16,7 @@ Use [mulle-sde](//github.com/mulle-sde) to add mulle-dlfcn to your project:
 ```
 mulle-sde dependency add --c \
                          --github mulle-core \
-                         --marks no-link,no-singlephase \
+                         --marks no-actual-link,no-singlephase \
                          mulle-dlfcn
 ```
 

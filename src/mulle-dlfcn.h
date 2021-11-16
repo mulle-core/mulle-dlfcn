@@ -32,7 +32,8 @@ static inline unsigned int   mulle_dlfcn_get_version_patch( void)
 }
 
 
-extern uint32_t   mulle_dlfcn_get_version( void);
+MULLE_DLFCN_EXTERN_GLOBAL
+uint32_t   mulle_dlfcn_get_version( void);
 
 
 
