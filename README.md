@@ -9,6 +9,11 @@ looking up symbols with `dlysm`.
 
 On Windows this will use [dlfcn-win32]() to supply `dlsym` and relatives.
 
+### You are here
+
+![Overview](overview.dot.svg)
+
+
 ## Add
 
 Use [mulle-sde](//github.com/mulle-sde) to add mulle-dlfcn to your project:
@@ -19,7 +24,6 @@ mulle-sde dependency add --c \
                          --marks no-actual-link,no-singlephase \
                          mulle-dlfcn
 ```
-
 
 ## Install
 
