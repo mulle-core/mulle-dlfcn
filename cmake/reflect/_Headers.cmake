@@ -34,6 +34,7 @@ src/include-private.h
 #
 set( PUBLIC_GENERATED_HEADERS
 src/reflect/_mulle-dlfcn-include.h
+src/reflect/_mulle-dlfcn-versioncheck.h
 )
 
 #
