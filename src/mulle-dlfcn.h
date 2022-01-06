@@ -11,7 +11,7 @@
  *
  *  version:  major, minor, patch
  */
-#define MULLE_DLFCN_VERSION  ((0 << 20) | (0 << 8) | 7)
+#define MULLE_DLFCN_VERSION  ((0 << 20) | (0 << 8) | 8)
 
 
 static inline unsigned int   mulle_dlfcn_get_version_major( void)
@@ -52,6 +52,13 @@ uint32_t   mulle_dlfcn_get_version( void);
 #  else
 #   error "need to define MULLE_RTLD_DEFAULT on this platform"
 #  endif
+# endif
+#endif
+
+
+#ifdef __has_include
+# if __has_include( "_mulle-dlcfn-versioncheck.h")
+#  include "_mulle-dlcfn-versioncheck.h"
 # endif
 #endif
 
