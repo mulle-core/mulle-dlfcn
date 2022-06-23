@@ -27,12 +27,21 @@
    Here the prefix is harmless and serves disambiguation. If you have no
    sourcetree, then you don't need it.
  */
+#ifdef MULLE_INCLUDE_DYNAMIC 
+# define DLFCN_WIN32_SHARED
+#endif
 
 #include "_mulle-dlfcn-include.h"
 
 // could also set MULLE_C_GLOBAL but we use cmake all export
-#ifndef MULLE_DLFCN_EXTERN_GLOBAL
-# define MULLE_DLFCN_EXTERN_GLOBAL MULLE_C_EXTERN_GLOBAL
+#ifdef MULLE_DLFCN_BUILD
+# define MULLE_DLFCN_GLOBAL    MULLE_C_GLOBAL
+#else
+# if defined( MULLE_DLFCN_INCLUDE_DYNAMIC) || (defined( MULLE_INCLUDE_DYNAMIC) && ! defined( MULLE_DLFCN_INCLUDE_STATIC))
+#  define MULLE_DLFCN_GLOBAL   MULLE_C_EXTERN_GLOBAL
+# else
+#  define MULLE_DLFCN_GLOBAL   extern
+# endif
 #endif
 
 /* You can add some more include statements here */
