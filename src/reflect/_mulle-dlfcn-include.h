@@ -36,7 +36,7 @@
 //    toggle optional:    `mulle-sde dependency mark dlfcn-win32 [no-]require`
 //    remove for platform:`mulle-sde dependency mark dlfcn-win32 no-platform-<uname>`
 //        (use `mulle-sourcetree-to-c --unames` to list known values)
-# if defined( _WIN32) || defined( __windows__)
+# if defined( _WIN32) || defined( _WIN32)
 # include <dlfcn.h>   // dlfcn-win32
 #endif
 
@@ -50,7 +50,7 @@
 //    toggle optional:    `mulle-sde dependency mark dl [no-]require`
 //    remove for platform:`mulle-sde dependency mark dl no-platform-<uname>`
 //        (use `mulle-sourcetree-to-c --unames` to list known values)
-# if ! defined( _WIN32) && ! defined( __windows__)
+# if ! defined( _WIN32) && ! defined( _WIN32)
 # include <dlfcn.h>   // dl
 #endif
 

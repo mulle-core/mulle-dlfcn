@@ -24,7 +24,7 @@
 //    toggle optional:    `mulle-sde dependency mark psapi [no-]require`
 //    remove for platform:`mulle-sde dependency mark psapi no-platform-<uname>`
 //        (use `mulle-sourcetree-to-c --unames` to list known values)
-# if defined( _WIN32) || defined( __windows__)
+# if defined( _WIN32) || defined( _WIN32)
 # ifdef __has_include
 #  if __has_include(<psapi.h>)
 #    include <psapi.h>   // psapi
