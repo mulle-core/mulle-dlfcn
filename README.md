@@ -33,7 +33,7 @@ Use [mulle-sde](//github.com/mulle-sde) to build and install mulle-dlfcn and all
 
 ```
 mulle-sde install --prefix /usr/local \
-   https://github.com/mulle-core/mulle-dlfcn/archive/latest.tar.gz
+   //github.com/mulle-core/mulle-dlfcn/archive/latest.tar.gz
 ```
 
 ### Manual Installation
