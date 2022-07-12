@@ -18,7 +18,7 @@ On Windows this will use [dlfcn-win32]() to supply `dlsym` and relatives.
 
 Use [mulle-sde](//github.com/mulle-sde) to add mulle-dlfcn to your project:
 
-```
+``` sh
 mulle-sde dependency add --c \
                          --github mulle-core \
                          --marks no-actual-link,no-singlephase \
@@ -31,7 +31,7 @@ mulle-sde dependency add --c \
 
 Use [mulle-sde](//github.com/mulle-sde) to build and install mulle-dlfcn and all dependencies:
 
-```
+``` sh
 mulle-sde install --prefix /usr/local \
    //github.com/mulle-core/mulle-dlfcn/archive/latest.tar.gz
 ```
@@ -40,7 +40,7 @@ mulle-sde install --prefix /usr/local \
 
 Install into `/usr/local`:
 
-```
+``` sh
 mkdir build 2> /dev/null
 (
    cd build ;
