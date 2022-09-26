@@ -15,6 +15,7 @@ endif()
 # Generated from sourcetree: A3ED849C-ECFE-4FB8-8E50-D5245D67E30B;mulle-c11;no-all-load,no-cmake-inherit,no-import,no-link,no-recurse,no-singlephase;
 # Disable with : `mulle-sourcetree mark mulle-c11 no-header`
 # Disable for this platform: `mulle-sourcetree mark mulle-c11 no-cmake-platform-${MULLE_UNAME}`
+# Disable for a sdk: `mulle-sourcetree mark mulle-c11 no-cmake-sdk-<name>`
 #
 if( NOT MULLE_C11_HEADER)
    find_file( MULLE_C11_HEADER NAMES mulle-c11.h mulle-c11/mulle-c11.h)
@@ -43,6 +44,7 @@ endif()
 # Generated from sourcetree: 8D2BE61C-D741-4FCC-8A99-5EB39BBE7A3E;dlfcn-win32;no-all-load,no-cmake-loader,no-cmake-searchpath,no-dynamic-link,no-import,no-intermediate-link,only-platform-mingw,only-platform-windows;dl
 # Disable with : `mulle-sourcetree mark dlfcn-win32 no-link`
 # Disable for this platform: `mulle-sourcetree mark dlfcn-win32 no-cmake-platform-${MULLE_UNAME}`
+# Disable for a sdk: `mulle-sourcetree mark dlfcn-win32 no-cmake-sdk-<name>`
 #
 if( ${CMAKE_SYSTEM_NAME} MATCHES "Windows")
    if( NOT DL_LIBRARY)
@@ -109,4 +111,4 @@ if( ${CMAKE_SYSTEM_NAME} MATCHES "Windows")
          message( FATAL_ERROR "DL_LIBRARY was not found")
       endif()
    endif()
-endif()
+   endif()
