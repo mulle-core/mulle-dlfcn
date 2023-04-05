@@ -12,14 +12,17 @@ if( MULLE_TRACE_INCLUDE)
 endif()
 
 #
-# Generated from sourcetree: 3035297A-114F-447F-AA5A-EDF4E3B174B6;dl;no-all-load,no-build,no-cmake-inherit,no-delete,no-dependency,no-fs,no-import,no-platform-mingw,no-platform-windows,no-share,no-update,version-max-darwin-10.99.0;dl,dlfcn
+# Generated from sourcetree: 3035297A-114F-447F-AA5A-EDF4E3B174B6;dl;no-all-load,no-build,no-cmake-inherit,no-cmake-platform-openbsd,no-delete,no-dependency,no-fs,no-import,no-platform-mingw,no-platform-windows,no-share,no-update,version-max-darwin-10.99.0;dl,dlfcn
 # Disable with : `mulle-sourcetree mark dl `
 # Disable for this platform: `mulle-sourcetree mark dl no-cmake-platform-${MULLE_UNAME}`
 # Disable for a sdk: `mulle-sourcetree mark dl no-cmake-sdk-<name>`
 #
-if( NOT ${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+if( NOT (${CMAKE_SYSTEM_NAME} MATCHES "Windows" OR ${CMAKE_SYSTEM_NAME} MATCHES "OpenBSD"))
    if( NOT DL_LIBRARY)
-      find_library( DL_LIBRARY NAMES dl dlfcn)
+      find_library( DL_LIBRARY NAMES
+         dl
+         dlfcn
+      )
       message( STATUS "DL_LIBRARY is ${DL_LIBRARY}")
       #
       # The order looks ascending, but due to the way this file is read
@@ -30,11 +33,7 @@ if( NOT ${CMAKE_SYSTEM_NAME} MATCHES "Windows")
          # Add DL_LIBRARY to OS_SPECIFIC_LIBRARIES list.
          # Disable with: `mulle-sourcetree mark dl no-cmake-add`
          #
-         set( OS_SPECIFIC_LIBRARIES
-            ${OS_SPECIFIC_LIBRARIES}
-            ${DL_LIBRARY}
-            CACHE INTERNAL "need to cache this"
-         )
+         list( APPEND OS_SPECIFIC_LIBRARIES ${DL_LIBRARY})
          # intentionally left blank
       else()
          # Disable with: `mulle-sourcetree mark dl no-require-link`
@@ -52,7 +51,9 @@ if( NOT ${CMAKE_SYSTEM_NAME} MATCHES "Windows")
 #
 if( ${CMAKE_SYSTEM_NAME} MATCHES "Windows")
    if( NOT PSAPI_LIBRARY)
-      find_library( PSAPI_LIBRARY NAMES psapi)
+      find_library( PSAPI_LIBRARY NAMES
+         psapi
+      )
       message( STATUS "PSAPI_LIBRARY is ${PSAPI_LIBRARY}")
       #
       # The order looks ascending, but due to the way this file is read
@@ -63,11 +64,7 @@ if( ${CMAKE_SYSTEM_NAME} MATCHES "Windows")
          # Add PSAPI_LIBRARY to OS_SPECIFIC_LIBRARIES list.
          # Disable with: `mulle-sourcetree mark psapi no-cmake-add`
          #
-         set( OS_SPECIFIC_LIBRARIES
-            ${OS_SPECIFIC_LIBRARIES}
-            ${PSAPI_LIBRARY}
-            CACHE INTERNAL "need to cache this"
-         )
+         list( APPEND OS_SPECIFIC_LIBRARIES ${PSAPI_LIBRARY})
          # intentionally left blank
       else()
          # Enable with: `mulle-sourcetree mark psapi require`

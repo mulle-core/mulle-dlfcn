@@ -1,0 +1,22 @@
+{
+   "name" : "mulle-dlfcn",
+   "version" : "0.0.10",
+   "description" : "Shared library helper",
+   "keywords" : [],
+   "license" : "BSD-3-Clause",
+   "repo" : "mulle-core/mulle-dlfcn",
+   "src" : [
+      "src/generic/include-private.h",
+      "src/generic/include.h",
+      "src/mulle-dlfcn-standalone.c",
+      "src/mulle-dlfcn.c",
+      "src/mulle-dlfcn.h",
+      "src/reflect/_mulle-dlfcn-include-private.h",
+      "src/reflect/_mulle-dlfcn-include.h",
+      "src/reflect/_mulle-dlfcn-versioncheck.h"
+   ],
+   "dependencies" : {
+      "mulle-c/mulle-c11": "*",
+      "mulle-core/dlfcn-win32": "*"
+   }
+}
