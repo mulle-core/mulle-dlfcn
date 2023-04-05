@@ -1,0 +1,7 @@
+This is an empty project that provides link instructions for consumers
+of the "dlfcn" on various platforms. It also provides the
+`MULLE_RTLD_DEFAULT` define, which is what one generally wants to use when
+looking up symbols with `dlysm`.
+
+On Windows this will use [dlfcn-win32]() to supply `dlsym` and relatives.
+
