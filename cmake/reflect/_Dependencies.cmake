@@ -28,7 +28,6 @@ if( NOT MULLE_C11_HEADER)
    set( HEADER_ONLY_LIBRARIES
       ${MULLE_C11_HEADER}
       ${HEADER_ONLY_LIBRARIES}
-      CACHE INTERNAL "need to cache this"
    )
    if( MULLE_C11_HEADER)
       # intentionally left blank
@@ -47,68 +46,64 @@ endif()
 # Disable for a sdk: `mulle-sourcetree mark dlfcn-win32 no-cmake-sdk-<name>`
 #
 if( ${CMAKE_SYSTEM_NAME} MATCHES "Windows")
-   if( NOT DL_LIBRARY)
-      find_library( DL_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}dl${CMAKE_DEBUG_POSTFIX}${CMAKE_STATIC_LIBRARY_SUFFIX} ${CMAKE_STATIC_LIBRARY_PREFIX}dl${CMAKE_STATIC_LIBRARY_SUFFIX} NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)
-      message( STATUS "DL_LIBRARY is ${DL_LIBRARY}")
+   if( NOT DLFCN_WIN32_LIBRARY)
+      if( DEPENDENCY_IGNORE_SYSTEM_LIBARIES)
+         find_library( DLFCN_WIN32_LIBRARY NAMES
+            ${CMAKE_STATIC_LIBRARY_PREFIX}dl${CMAKE_DEBUG_POSTFIX}${CMAKE_STATIC_LIBRARY_SUFFIX}
+            ${CMAKE_STATIC_LIBRARY_PREFIX}dl${CMAKE_STATIC_LIBRARY_SUFFIX}
+            NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH
+         )
+      else()
+         find_library( DLFCN_WIN32_LIBRARY NAMES
+            ${CMAKE_STATIC_LIBRARY_PREFIX}dl${CMAKE_DEBUG_POSTFIX}${CMAKE_STATIC_LIBRARY_SUFFIX}
+            ${CMAKE_STATIC_LIBRARY_PREFIX}dl${CMAKE_STATIC_LIBRARY_SUFFIX}
+         )
+      endif()
+      message( STATUS "DLFCN_WIN32_LIBRARY is ${DLFCN_WIN32_LIBRARY}")
       #
       # The order looks ascending, but due to the way this file is read
       # it ends up being descending, which is what we need.
       #
-      if( DL_LIBRARY)
+      if( DLFCN_WIN32_LIBRARY)
          #
-         # Add DL_LIBRARY to STARTUP_DEPENDENCY_LIBRARIES list.
+         # Add DLFCN_WIN32_LIBRARY to STARTUP_DEPENDENCY_LIBRARIES list.
          # Disable with: `mulle-sourcetree mark dlfcn-win32 no-cmake-add`
          #
-         set( STARTUP_DEPENDENCY_LIBRARIES
-            ${STARTUP_DEPENDENCY_LIBRARIES}
-            ${DL_LIBRARY}
-            CACHE INTERNAL "need to cache this"
-         )
+         list( APPEND STARTUP_DEPENDENCY_LIBRARIES ${DLFCN_WIN32_LIBRARY})
          #
          # Inherit information from dependency.
          # Encompasses: no-cmake-searchpath,no-cmake-dependency,no-cmake-loader
          # Disable with: `mulle-sourcetree mark dlfcn-win32 no-cmake-inherit`
          #
          # temporarily expand CMAKE_MODULE_PATH
-         get_filename_component( _TMP_DL_ROOT "${DL_LIBRARY}" DIRECTORY)
-         get_filename_component( _TMP_DL_ROOT "${_TMP_DL_ROOT}" DIRECTORY)
+         get_filename_component( _TMP_DLFCN_WIN32_ROOT "${DLFCN_WIN32_LIBRARY}" DIRECTORY)
+         get_filename_component( _TMP_DLFCN_WIN32_ROOT "${_TMP_DLFCN_WIN32_ROOT}" DIRECTORY)
          #
          #
-         # Search for "DependenciesAndLibraries.cmake" to include.
+         # Search for "Definitions.cmake" and "DependenciesAndLibraries.cmake" to include.
          # Disable with: `mulle-sourcetree mark dlfcn-win32 no-cmake-dependency`
          #
-         foreach( _TMP_DL_NAME "dl")
-            set( _TMP_DL_DIR "${_TMP_DL_ROOT}/include/${_TMP_DL_NAME}/cmake")
+         foreach( _TMP_DLFCN_WIN32_NAME "dl")
+            set( _TMP_DLFCN_WIN32_DIR "${_TMP_DLFCN_WIN32_ROOT}/include/${_TMP_DLFCN_WIN32_NAME}/cmake")
             # use explicit path to avoid "surprises"
-            if( EXISTS "${_TMP_DL_DIR}/DependenciesAndLibraries.cmake")
-               unset( DL_DEFINITIONS)
-               list( INSERT CMAKE_MODULE_PATH 0 "${_TMP_DL_DIR}")
-               # we only want top level INHERIT_OBJC_LOADERS, so disable them
-               if( NOT NO_INHERIT_OBJC_LOADERS)
-                  set( NO_INHERIT_OBJC_LOADERS OFF)
-               endif()
-               list( APPEND _TMP_INHERIT_OBJC_LOADERS ${NO_INHERIT_OBJC_LOADERS})
-               set( NO_INHERIT_OBJC_LOADERS ON)
+            if( IS_DIRECTORY "${_TMP_DLFCN_WIN32_DIR}")
+               list( INSERT CMAKE_MODULE_PATH 0 "${_TMP_DLFCN_WIN32_DIR}")
                #
-               include( "${_TMP_DL_DIR}/DependenciesAndLibraries.cmake")
+               include( "${_TMP_DLFCN_WIN32_DIR}/DependenciesAndLibraries.cmake" OPTIONAL)
                #
-               list( GET _TMP_INHERIT_OBJC_LOADERS -1 NO_INHERIT_OBJC_LOADERS)
-               list( REMOVE_AT _TMP_INHERIT_OBJC_LOADERS -1)
+               list( REMOVE_ITEM CMAKE_MODULE_PATH "${_TMP_DLFCN_WIN32_DIR}")
                #
-               list( REMOVE_ITEM CMAKE_MODULE_PATH "${_TMP_DL_DIR}")
-               set( INHERITED_DEFINITIONS
-                  ${INHERITED_DEFINITIONS}
-                  ${DL_DEFINITIONS}
-                  CACHE INTERNAL "need to cache this"
-               )
+               unset( DLFCN_WIN32_DEFINITIONS)
+               include( "${_TMP_DLFCN_WIN32_DIR}/Definitions.cmake" OPTIONAL)
+               list( APPEND INHERITED_DEFINITIONS ${DLFCN_WIN32_DEFINITIONS})
                break()
             else()
-               message( STATUS "${_TMP_DL_DIR}/DependenciesAndLibraries.cmake not found")
+               message( STATUS "${_TMP_DLFCN_WIN32_DIR} not found")
             endif()
          endforeach()
       else()
          # Disable with: `mulle-sourcetree mark dlfcn-win32 no-require-link`
-         message( FATAL_ERROR "DL_LIBRARY was not found")
+         message( FATAL_ERROR "DLFCN_WIN32_LIBRARY was not found")
       endif()
    endif()
    endif()
