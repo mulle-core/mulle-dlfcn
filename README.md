@@ -9,9 +9,15 @@ looking up symbols with `dlysm`.
 
 On Windows this will use [dlfcn-win32]() to supply `dlsym` and relatives.
 
-### You are here
 
-![Overview](overview.dot.svg)
+| Release Version                                       | Release Notes
+|-------------------------------------------------------|--------------
+| ![Mulle kybernetiK tag](https://img.shields.io/github/tag/mulle-core/mulle-dlfcn.svg?branch=release) [![Build Status](https://github.com/mulle-core/mulle-dlfcn/workflows/CI/badge.svg?branch=release)](//github.com/mulle-core/mulle-dlfcn/actions)| [RELEASENOTES](RELEASENOTES.md) |
+
+
+
+
+
 
 
 ## Add
@@ -19,15 +25,23 @@ On Windows this will use [dlfcn-win32]() to supply `dlsym` and relatives.
 Use [mulle-sde](//github.com/mulle-sde) to add mulle-dlfcn to your project:
 
 ``` sh
-mulle-sde dependency add --c \
-                         --github mulle-core \
-                         --marks no-actual-link,no-singlephase \
-                         mulle-dlfcn
+mulle-sde add github:mulle-core/mulle-dlfcn
 ```
+
+To only add the sources of mulle-dlfcn with dependency
+sources use [clib](https://github.com/clibs/clib):
+
+
+``` sh
+clib install --out src/mulle-core mulle-core/mulle-dlfcn
+```
+
+Add `-isystem src/mulle-core` to your `CFLAGS` and compile all the sources that were downloaded with your project.
+
 
 ## Install
 
-### mulle-sde
+### Install with mulle-sde
 
 Use [mulle-sde](//github.com/mulle-sde) to build and install mulle-dlfcn and all dependencies:
 
@@ -38,7 +52,14 @@ mulle-sde install --prefix /usr/local \
 
 ### Manual Installation
 
-Install into `/usr/local`:
+Install the requirements:
+
+| Requirements                                 | Description
+|----------------------------------------------|-----------------------
+| [mulle-c11](https://github.com/mulle-c/mulle-c11)             | 🔀 Cross-platform C compiler glue (and some cpp conveniences)
+| [dlfcn-win32](https://github.com/mulle-core/dlfcn-win32)             | ===========
+
+Install **mulle-dlfcn** into `/usr/local` with [cmake](https://cmake.org):
 
 ``` sh
 cmake -B build \
@@ -49,5 +70,8 @@ cmake --build build --config Release &&
 cmake --install build --config Release
 ```
 
+## Author
+
+[Nat!](https://mulle-kybernetik.com/weblog) for Mulle kybernetiK
 
 
