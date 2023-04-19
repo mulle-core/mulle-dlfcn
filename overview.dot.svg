@@ -18,8 +18,11 @@
 <!-- dlfcn&#45;win32 -->
 <g id="node2" class="node">
 <title>dlfcn&#45;win32</title>
+<g id="a_node2"><a xlink:href="https://github.com/mulle-core/dlfcn-win32" xlink:title="dlfcn&#45;win32">
 <polygon fill="lightgrey" stroke="black" points="100,-36 0,-36 0,0 100,0 100,-36"/>
 <text text-anchor="middle" x="50" y="-14.3" font-family="Times,serif" font-size="14.00">dlfcn&#45;win32</text>
+</a>
+</g>
 </g>
 <!-- mulle&#45;dlfcn&#45;&gt;dlfcn&#45;win32 -->
 <g id="edge1" class="edge">
@@ -30,8 +33,11 @@
 <!-- mulle&#45;c11 -->
 <g id="node3" class="node">
 <title>mulle&#45;c11</title>
+<g id="a_node3"><a xlink:href="https://github.com/mulle-c/mulle-c11" xlink:title="mulle&#45;c11">
 <polygon fill="lightgrey" stroke="black" points="204,-36 118,-36 118,0 204,0 204,-36"/>
 <text text-anchor="middle" x="161" y="-14.3" font-family="Times,serif" font-size="14.00">mulle&#45;c11</text>
+</a>
+</g>
 </g>
 <!-- mulle&#45;dlfcn&#45;&gt;mulle&#45;c11 -->
 <g id="edge2" class="edge">

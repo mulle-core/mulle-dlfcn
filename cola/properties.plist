@@ -1,0 +1,31 @@
+{
+   project =
+   {
+      description="♿️ Shared library helper";
+      domain="github";
+      name="mulle-dlfcn";
+      user="mulle-core";
+      repo="mulle-dlfcn";
+      homepage="https://github.com/mulle-core/mulle-dlfcn";
+      license="BSD-3-Clause"
+   };
+   dependencies =
+   (
+      {
+         description="🔀 Cross-platform C compiler glue (and some cpp conveniences)";
+         domain="github";
+         name="mulle-c11";
+         repo="mulle-c11";
+         url="https://github.com/mulle-c/mulle-c11";
+         user="mulle-c";
+      },
+      {
+         description="===========";
+         domain="github";
+         name="dlfcn-win32";
+         repo="dlfcn-win32";
+         url="https://github.com/mulle-core/dlfcn-win32";
+         user="mulle-core";
+      }
+   )
+}
