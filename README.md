@@ -66,6 +66,8 @@ Install the requirements:
 | [mulle-c11](https://github.com/mulle-c/mulle-c11)             | 🔀 Cross-platform C compiler glue (and some cpp conveniences)
 | [dlfcn-win32](https://github.com/mulle-core/dlfcn-win32)             | ===========
 
+Download the latest [tar](https://github.com/mulle-core/mulle-dlfcn/archive/refs/tags/latest.tar.gz) or [zip](https://github.com/mulle-core/mulle-dlfcn/archive/refs/tags/latest.zip) archive and unpack it.
+
 Install **mulle-dlfcn** into `/usr/local` with [cmake](https://cmake.org):
 
 ``` sh
