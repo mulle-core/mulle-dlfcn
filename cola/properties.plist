@@ -20,7 +20,7 @@
          user="mulle-c";
       },
       {
-         description="dlfcn-win32 is an implementation of dlfcn for Windows";
+         description="===========";
          domain="github";
          name="dlfcn-win32";
          repo="dlfcn-win32";
