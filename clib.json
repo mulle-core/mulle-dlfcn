@@ -1,6 +1,6 @@
 {
    "name" : "mulle-dlfcn",
-   "version" : "0.0.12",
+   "version" : "0.0.13",
    "description" : "♿️ Shared library helper",
    "keywords" : [],
    "license" : "BSD-3-Clause",
