@@ -3,6 +3,8 @@
    {
       description="♿️ Shared library helper";
       domain="github";
+      language="c";
+      dialect="c";
       name="mulle-dlfcn";
       user="mulle-core";
       repo="mulle-dlfcn";

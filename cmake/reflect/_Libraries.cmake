@@ -12,35 +12,39 @@ if( MULLE_TRACE_INCLUDE)
 endif()
 
 #
-# Generated from sourcetree: 3035297A-114F-447F-AA5A-EDF4E3B174B6;dl;no-all-load,no-build,no-cmake-inherit,no-cmake-platform-openbsd,no-delete,no-dependency,no-fs,no-import,no-platform-mingw,no-platform-windows,no-share,no-update,version-max-darwin-10.99.0;dl,dlfcn
+# Generated from sourcetree: 3035297A-114F-447F-AA5A-EDF4E3B174B6;dl;no-all-load,no-build,no-cmake-inherit,no-cmake-platform-openbsd,no-delete,no-dependency,no-fs,no-import,no-platform-mingw,no-platform-windows,no-require,no-share,no-update,version-max-darwin-10.99.0;dl,dlfcn
 # Disable with : `mulle-sourcetree mark dl `
 # Disable for this platform: `mulle-sourcetree mark dl no-cmake-platform-${MULLE_UNAME}`
 # Disable for a sdk: `mulle-sourcetree mark dl no-cmake-sdk-<name>`
 #
 if( NOT (${CMAKE_SYSTEM_NAME} MATCHES "Windows" OR ${CMAKE_SYSTEM_NAME} MATCHES "OpenBSD"))
-   if( NOT DL_LIBRARY)
-      find_library( DL_LIBRARY NAMES
-         dl
-         dlfcn
-      )
-      message( STATUS "DL_LIBRARY is ${DL_LIBRARY}")
-      #
-      # The order looks ascending, but due to the way this file is read
-      # it ends up being descending, which is what we need.
-      #
-      if( DL_LIBRARY)
+   if( COLLECT_OS_SPECIFIC_LIBRARIES_AS_NAMES)
+      list( APPEND OS_SPECIFIC_LIBRARIES "dl")
+   else()
+      if( NOT DL_LIBRARY)
+         find_library( DL_LIBRARY NAMES
+            dl
+            dlfcn
+         )
+         message( STATUS "DL_LIBRARY is ${DL_LIBRARY}")
          #
-         # Add DL_LIBRARY to OS_SPECIFIC_LIBRARIES list.
-         # Disable with: `mulle-sourcetree mark dl no-cmake-add`
+         # The order looks ascending, but due to the way this file is read
+         # it ends up being descending, which is what we need.
          #
-         list( APPEND OS_SPECIFIC_LIBRARIES ${DL_LIBRARY})
-         # intentionally left blank
-      else()
-         # Disable with: `mulle-sourcetree mark dl no-require-link`
-         message( FATAL_ERROR "DL_LIBRARY was not found")
+         if( DL_LIBRARY)
+            #
+            # Add DL_LIBRARY to OS_SPECIFIC_LIBRARIES list.
+            # Disable with: `mulle-sourcetree mark dl no-cmake-add`
+            #
+            list( APPEND OS_SPECIFIC_LIBRARIES ${DL_LIBRARY})
+            # intentionally left blank
+         else()
+            # Enable with: `mulle-sourcetree mark dl require`
+            message( STATUS "DL_LIBRARY is missing but it is marked as \"no-require\"")
+         endif()
       endif()
    endif()
-   endif()
+endif()
 
 
 #
@@ -50,25 +54,29 @@ if( NOT (${CMAKE_SYSTEM_NAME} MATCHES "Windows" OR ${CMAKE_SYSTEM_NAME} MATCHES 
 # Disable for a sdk: `mulle-sourcetree mark psapi no-cmake-sdk-<name>`
 #
 if( ${CMAKE_SYSTEM_NAME} MATCHES "Windows")
-   if( NOT PSAPI_LIBRARY)
-      find_library( PSAPI_LIBRARY NAMES
-         psapi
-      )
-      message( STATUS "PSAPI_LIBRARY is ${PSAPI_LIBRARY}")
-      #
-      # The order looks ascending, but due to the way this file is read
-      # it ends up being descending, which is what we need.
-      #
-      if( PSAPI_LIBRARY)
+   if( COLLECT_OS_SPECIFIC_LIBRARIES_AS_NAMES)
+      list( APPEND OS_SPECIFIC_LIBRARIES "psapi")
+   else()
+      if( NOT PSAPI_LIBRARY)
+         find_library( PSAPI_LIBRARY NAMES
+            psapi
+         )
+         message( STATUS "PSAPI_LIBRARY is ${PSAPI_LIBRARY}")
          #
-         # Add PSAPI_LIBRARY to OS_SPECIFIC_LIBRARIES list.
-         # Disable with: `mulle-sourcetree mark psapi no-cmake-add`
+         # The order looks ascending, but due to the way this file is read
+         # it ends up being descending, which is what we need.
          #
-         list( APPEND OS_SPECIFIC_LIBRARIES ${PSAPI_LIBRARY})
-         # intentionally left blank
-      else()
-         # Enable with: `mulle-sourcetree mark psapi require`
-         message( STATUS "PSAPI_LIBRARY is missing but it is marked as \"no-require\"")
+         if( PSAPI_LIBRARY)
+            #
+            # Add PSAPI_LIBRARY to OS_SPECIFIC_LIBRARIES list.
+            # Disable with: `mulle-sourcetree mark psapi no-cmake-add`
+            #
+            list( APPEND OS_SPECIFIC_LIBRARIES ${PSAPI_LIBRARY})
+            # intentionally left blank
+         else()
+            # Enable with: `mulle-sourcetree mark psapi require`
+            message( STATUS "PSAPI_LIBRARY is missing but it is marked as \"no-require\"")
+         endif()
       endif()
    endif()
-   endif()
+endif()
