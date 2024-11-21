@@ -14,7 +14,7 @@ On Windows this will use [dlfcn-win32]() to supply `dlsym` and relatives.
 
 | Release Version                                       | Release Notes
 |-------------------------------------------------------|--------------
-| ![Mulle kybernetiK tag](https://img.shields.io/github/tag/mulle-core/mulle-dlfcn.svg?branch=release) [![Build Status](https://github.com/mulle-core/mulle-dlfcn/workflows/CI/badge.svg?branch=release)](//github.com/mulle-core/mulle-dlfcn/actions) | [RELEASENOTES](RELEASENOTES.md) |
+| ![Mulle kybernetiK tag](https://img.shields.io/github/tag/mulle-core/mulle-dlfcn.svg) [![Build Status](https://github.com/mulle-core/mulle-dlfcn/workflows/CI/badge.svg)](//github.com/mulle-core/mulle-dlfcn/actions) | [RELEASENOTES](RELEASENOTES.md) |
 
 
 
