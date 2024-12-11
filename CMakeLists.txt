@@ -1,6 +1,6 @@
 cmake_minimum_required( VERSION 3.14)
 
-project( mulle-dlfcn VERSION 0.0.13 LANGUAGES C)
+project( mulle-dlfcn VERSION 0.0.14 LANGUAGES C)
 
 
 
