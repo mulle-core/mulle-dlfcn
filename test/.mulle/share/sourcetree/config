@@ -1,1 +1,1 @@
-mulle-dlfcn;${MULLE__DLFCN_NODETYPE:-tar};;CA3591A4-8DB6-44E4-9340-A9ACA9F5560C;${MULLE__DLFCN_URL:-https://github.com/nat/mulle-dlfcn/archive/${MULLE_TAG}.tar.gz};${MULLE__DLFCN_BRANCH};${MULLE__DLFCN_TAG:-latest};;
+mulle-dlfcn;${MULLE__DLFCN_NODETYPE:-tar};;BC7C5983-D772-48AB-85C9-E838C0D390D1;${MULLE__DLFCN_URL:-https://github.com/mulle-nat/mulle-dlfcn/archive/${MULLE_TAG}.tar.gz};${MULLE__DLFCN_BRANCH};${MULLE__DLFCN_TAG:-latest};;
