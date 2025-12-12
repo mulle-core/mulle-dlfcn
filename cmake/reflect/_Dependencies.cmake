@@ -12,13 +12,21 @@ if( MULLE_TRACE_INCLUDE)
 endif()
 
 #
-# Generated from sourcetree: A3ED849C-ECFE-4FB8-8E50-D5245D67E30B;mulle-c11;no-all-load,no-cmake-inherit,no-import,no-link,no-recurse,no-singlephase;
+# Generated from sourcetree: A3ED849C-ECFE-4FB8-8E50-D5245D67E30B;mulle-c11;no-all-load,no-cmake-inherit,no-import,no-link,no-recurse,no-singlephase;mulle-core,mulle-c11
 # Disable with : `mulle-sourcetree mark mulle-c11 no-header`
 # Disable for this platform: `mulle-sourcetree mark mulle-c11 no-cmake-platform-${MULLE_UNAME}`
 # Disable for a sdk: `mulle-sourcetree mark mulle-c11 no-cmake-sdk-<name>`
 #
 if( NOT MULLE__C11_HEADER)
-   find_file( MULLE__C11_HEADER NAMES mulle-c11.h mulle-c11/mulle-c11.h)
+   find_file( MULLE__C11_HEADER NAMES
+      mulle-c11.h mulle-core/mulle-core.h mulle-c11/mulle-c11.h
+      NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH NO_CMAKE_FIND_ROOT_PATH
+   )
+   if( NOT MULLE__C11_HEADER AND NOT DEPENDENCY_IGNORE_SYSTEM_HEADERS)
+      find_file( MULLE__C11_HEADER NAMES
+         mulle-c11.h mulle-core/mulle-core.h mulle-c11/mulle-c11.h
+      )
+   endif()
    message( STATUS "MULLE__C11_HEADER is ${MULLE__C11_HEADER}")
 
    #
@@ -33,7 +41,7 @@ if( NOT MULLE__C11_HEADER)
       # intentionally left blank
    else()
       # Disable with: `mulle-sourcetree mark mulle-c11 no-require`
-      message( SEND_ERROR "MULLE__C11_HEADER was not found")
+      message( SEND_ERROR "MULLE__C11_HEADER was not found in mulle-c11.h mulle-core/mulle-core.h mulle-c11/mulle-c11.h")
    endif()
 endif()
 
@@ -53,7 +61,7 @@ if( ${CMAKE_SYSTEM_NAME} MATCHES "Windows")
          find_library( DLFCN__WIN32_LIBRARY NAMES
             ${CMAKE_STATIC_LIBRARY_PREFIX}dl${CMAKE_DEBUG_POSTFIX}${CMAKE_STATIC_LIBRARY_SUFFIX}
             ${CMAKE_STATIC_LIBRARY_PREFIX}dl${CMAKE_STATIC_LIBRARY_SUFFIX}
-            NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH
+            NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH NO_CMAKE_FIND_ROOT_PATH
          )
          if( NOT DLFCN__WIN32_LIBRARY AND NOT DEPENDENCY_IGNORE_SYSTEM_LIBARIES)
             find_library( DLFCN__WIN32_LIBRARY NAMES
@@ -105,7 +113,8 @@ if( ${CMAKE_SYSTEM_NAME} MATCHES "Windows")
             endforeach()
          else()
             # Disable with: `mulle-sourcetree mark dlfcn-win32 no-require-link`
-            message( SEND_ERROR "DLFCN__WIN32_LIBRARY was not found")
+            message( SEND_ERROR "DLFCN__WIN32_LIBRARY was not found in ${CMAKE_STATIC_LIBRARY_PREFIX}dl${CMAKE_DEBUG_POSTFIX}${CMAKE_STATIC_LIBRARY_SUFFIX}
+${CMAKE_STATIC_LIBRARY_PREFIX}dl${CMAKE_STATIC_LIBRARY_SUFFIX}")
          endif()
       endif()
    endif()
