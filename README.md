@@ -71,7 +71,7 @@ Install the requirements:
 | Requirements                                 | Description
 |----------------------------------------------|-----------------------
 | [mulle-c11](https://github.com/mulle-c/mulle-c11)             | 🔀 Cross-platform C compiler glue (and some cpp conveniences)
-| [dlfcn-win32](https://github.com/mulle-core/dlfcn-win32)             | ===========
+| [dlfcn-win32](https://github.com/mulle-core/dlfcn-win32)             | dlfcn-win32 [![Build status](https://ci.appveyor.com/api/projects/status/celmbkqj0k41fk04/branch/master?svg=true)](https://ci.appveyor.com/project/dlfcn-win32/dlfcn-win32/branch/master)
 
 Download the latest [tar](https://github.com/mulle-core/mulle-dlfcn/archive/refs/tags/latest.tar.gz) or [zip](https://github.com/mulle-core/mulle-dlfcn/archive/refs/tags/latest.zip) archive and unpack it.
 
