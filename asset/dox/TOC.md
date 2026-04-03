@@ -1,4 +1,5 @@
 # mulle-dlfcn Library Documentation for AI
+<!-- Keywords: dynamic-loading, plugins -->
 
 ## 1. Introduction & Purpose
 

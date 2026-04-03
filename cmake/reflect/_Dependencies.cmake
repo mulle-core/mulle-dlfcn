@@ -12,6 +12,21 @@ if( MULLE_TRACE_INCLUDE)
 endif()
 
 #
+# Set library preference based on BUILD_SHARED_LIBS
+#
+if( BUILD_SHARED_LIBS)
+   set( MULLE_PREFERRED_LIBRARY_PREFIX "${CMAKE_SHARED_LIBRARY_PREFIX}")
+   set( MULLE_PREFERRED_LIBRARY_SUFFIX "${CMAKE_SHARED_LIBRARY_SUFFIX}")
+   set( MULLE_FALLBACK_LIBRARY_PREFIX "${CMAKE_STATIC_LIBRARY_PREFIX}")
+   set( MULLE_FALLBACK_LIBRARY_SUFFIX "${CMAKE_STATIC_LIBRARY_SUFFIX}")
+else()
+   set( MULLE_PREFERRED_LIBRARY_PREFIX "${CMAKE_STATIC_LIBRARY_PREFIX}")
+   set( MULLE_PREFERRED_LIBRARY_SUFFIX "${CMAKE_STATIC_LIBRARY_SUFFIX}")
+   set( MULLE_FALLBACK_LIBRARY_PREFIX "${CMAKE_SHARED_LIBRARY_PREFIX}")
+   set( MULLE_FALLBACK_LIBRARY_SUFFIX "${CMAKE_SHARED_LIBRARY_SUFFIX}")
+endif()
+
+#
 # Generated from sourcetree: A3ED849C-ECFE-4FB8-8E50-D5245D67E30B;mulle-c11;no-all-load,no-cmake-inherit,no-import,no-link,no-recurse,no-singlephase;mulle-core,mulle-c11
 # Disable with : `mulle-sourcetree mark mulle-c11 no-header`
 # Disable for this platform: `mulle-sourcetree mark mulle-c11 no-cmake-platform-${MULLE_UNAME}`
@@ -48,25 +63,41 @@ endif()
 
 
 #
-# Generated from sourcetree: 8D2BE61C-D741-4FCC-8A99-5EB39BBE7A3E;dlfcn-win32;no-all-load,no-cmake-loader,no-cmake-searchpath,no-dynamic-link,no-import,no-intermediate-link,only-platform-mingw,only-platform-windows;dl
+# Generated from sourcetree: 8D2BE61C-D741-4FCC-8A99-5EB39BBE7A3E;dlfcn-win32;no-all-load,no-cmake-loader,no-cmake-searchpath,no-import,only-platform-mingw,only-platform-windows;mulle-core,dl
 # Disable with : `mulle-sourcetree mark dlfcn-win32 no-link`
 # Disable for this platform: `mulle-sourcetree mark dlfcn-win32 no-cmake-platform-${MULLE_UNAME}`
 # Disable for a sdk: `mulle-sourcetree mark dlfcn-win32 no-cmake-sdk-<name>`
 #
 if( ${CMAKE_SYSTEM_NAME} MATCHES "Windows")
-   if( COLLECT_STARTUP_DEPENDENCY_LIBRARIES_AS_NAMES)
-      list( APPEND STARTUP_DEPENDENCY_LIBRARIES "dl")
+   if( COLLECT_DEPENDENCY_LIBRARIES_AS_NAMES)
+      list( APPEND DEPENDENCY_LIBRARIES "mulle-core")
    else()
       if( NOT DLFCN__WIN32_LIBRARY)
          find_library( DLFCN__WIN32_LIBRARY NAMES
-            ${CMAKE_STATIC_LIBRARY_PREFIX}dl${CMAKE_DEBUG_POSTFIX}${CMAKE_STATIC_LIBRARY_SUFFIX}
-            ${CMAKE_STATIC_LIBRARY_PREFIX}dl${CMAKE_STATIC_LIBRARY_SUFFIX}
+            ${MULLE_PREFERRED_LIBRARY_PREFIX}mulle-core${CMAKE_DEBUG_POSTFIX}${MULLE_PREFERRED_LIBRARY_SUFFIX}
+            ${MULLE_PREFERRED_LIBRARY_PREFIX}mulle-core${MULLE_PREFERRED_LIBRARY_SUFFIX}
+            ${MULLE_FALLBACK_LIBRARY_PREFIX}mulle-core${CMAKE_DEBUG_POSTFIX}${MULLE_FALLBACK_LIBRARY_SUFFIX}
+            ${MULLE_FALLBACK_LIBRARY_PREFIX}mulle-core${MULLE_FALLBACK_LIBRARY_SUFFIX}
+            mulle-core
+            ${MULLE_PREFERRED_LIBRARY_PREFIX}dl${CMAKE_DEBUG_POSTFIX}${MULLE_PREFERRED_LIBRARY_SUFFIX}
+            ${MULLE_PREFERRED_LIBRARY_PREFIX}dl${MULLE_PREFERRED_LIBRARY_SUFFIX}
+            ${MULLE_FALLBACK_LIBRARY_PREFIX}dl${CMAKE_DEBUG_POSTFIX}${MULLE_FALLBACK_LIBRARY_SUFFIX}
+            ${MULLE_FALLBACK_LIBRARY_PREFIX}dl${MULLE_FALLBACK_LIBRARY_SUFFIX}
+            dl
             NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH NO_CMAKE_FIND_ROOT_PATH
          )
          if( NOT DLFCN__WIN32_LIBRARY AND NOT DEPENDENCY_IGNORE_SYSTEM_LIBARIES)
             find_library( DLFCN__WIN32_LIBRARY NAMES
-               ${CMAKE_STATIC_LIBRARY_PREFIX}dl${CMAKE_DEBUG_POSTFIX}${CMAKE_STATIC_LIBRARY_SUFFIX}
-               ${CMAKE_STATIC_LIBRARY_PREFIX}dl${CMAKE_STATIC_LIBRARY_SUFFIX}
+               ${MULLE_PREFERRED_LIBRARY_PREFIX}mulle-core${CMAKE_DEBUG_POSTFIX}${MULLE_PREFERRED_LIBRARY_SUFFIX}
+               ${MULLE_PREFERRED_LIBRARY_PREFIX}mulle-core${MULLE_PREFERRED_LIBRARY_SUFFIX}
+               ${MULLE_FALLBACK_LIBRARY_PREFIX}mulle-core${CMAKE_DEBUG_POSTFIX}${MULLE_FALLBACK_LIBRARY_SUFFIX}
+               ${MULLE_FALLBACK_LIBRARY_PREFIX}mulle-core${MULLE_FALLBACK_LIBRARY_SUFFIX}
+               mulle-core
+               ${MULLE_PREFERRED_LIBRARY_PREFIX}dl${CMAKE_DEBUG_POSTFIX}${MULLE_PREFERRED_LIBRARY_SUFFIX}
+               ${MULLE_PREFERRED_LIBRARY_PREFIX}dl${MULLE_PREFERRED_LIBRARY_SUFFIX}
+               ${MULLE_FALLBACK_LIBRARY_PREFIX}dl${CMAKE_DEBUG_POSTFIX}${MULLE_FALLBACK_LIBRARY_SUFFIX}
+               ${MULLE_FALLBACK_LIBRARY_PREFIX}dl${MULLE_FALLBACK_LIBRARY_SUFFIX}
+               dl
             )
          endif()
          message( STATUS "DLFCN__WIN32_LIBRARY is ${DLFCN__WIN32_LIBRARY}")
@@ -76,10 +107,10 @@ if( ${CMAKE_SYSTEM_NAME} MATCHES "Windows")
          #
          if( DLFCN__WIN32_LIBRARY)
             #
-            # Add DLFCN__WIN32_LIBRARY to STARTUP_DEPENDENCY_LIBRARIES list.
+            # Add DLFCN__WIN32_LIBRARY to DEPENDENCY_LIBRARIES list.
             # Disable with: `mulle-sourcetree mark dlfcn-win32 no-cmake-add`
             #
-            list( APPEND STARTUP_DEPENDENCY_LIBRARIES ${DLFCN__WIN32_LIBRARY})
+            list( APPEND DEPENDENCY_LIBRARIES ${DLFCN__WIN32_LIBRARY})
             #
             # Inherit information from dependency.
             # Encompasses: no-cmake-searchpath,no-cmake-dependency,no-cmake-loader
@@ -93,7 +124,7 @@ if( ${CMAKE_SYSTEM_NAME} MATCHES "Windows")
             # Search for "Definitions.cmake" and "DependenciesAndLibraries.cmake" to include.
             # Disable with: `mulle-sourcetree mark dlfcn-win32 no-cmake-dependency`
             #
-            foreach( _TMP_DLFCN__WIN32_NAME "dl")
+            foreach( _TMP_DLFCN__WIN32_NAME "mulle-core" "dl")
                set( _TMP_DLFCN__WIN32_DIR "${_TMP_DLFCN__WIN32_ROOT}/include/${_TMP_DLFCN__WIN32_NAME}/cmake")
                # use explicit path to avoid "surprises"
                if( IS_DIRECTORY "${_TMP_DLFCN__WIN32_DIR}")
@@ -104,8 +135,11 @@ if( ${CMAKE_SYSTEM_NAME} MATCHES "Windows")
                   list( REMOVE_ITEM CMAKE_MODULE_PATH "${_TMP_DLFCN__WIN32_DIR}")
                   #
                   unset( DLFCN__WIN32_DEFINITIONS)
+                  unset( DLFCN__WIN32_RENDEZVOUS_GLOBALS)
                   include( "${_TMP_DLFCN__WIN32_DIR}/Definitions.cmake" OPTIONAL)
                   list( APPEND INHERITED_DEFINITIONS ${DLFCN__WIN32_DEFINITIONS})
+                  include( "${_TMP_DLFCN__WIN32_DIR}/Definitions.cmake" OPTIONAL)
+                  list( APPEND RENDEZVOUS_GLOBALS ${DLFCN__WIN32_RENDEZVOUS_GLOBALS})
                   break()
                else()
                   message( STATUS "${_TMP_DLFCN__WIN32_DIR} not found")
@@ -113,8 +147,16 @@ if( ${CMAKE_SYSTEM_NAME} MATCHES "Windows")
             endforeach()
          else()
             # Disable with: `mulle-sourcetree mark dlfcn-win32 no-require-link`
-            message( SEND_ERROR "DLFCN__WIN32_LIBRARY was not found in ${CMAKE_STATIC_LIBRARY_PREFIX}dl${CMAKE_DEBUG_POSTFIX}${CMAKE_STATIC_LIBRARY_SUFFIX}
-${CMAKE_STATIC_LIBRARY_PREFIX}dl${CMAKE_STATIC_LIBRARY_SUFFIX}")
+            message( SEND_ERROR "DLFCN__WIN32_LIBRARY was not found in ${MULLE_PREFERRED_LIBRARY_PREFIX}mulle-core${CMAKE_DEBUG_POSTFIX}${MULLE_PREFERRED_LIBRARY_SUFFIX}
+${MULLE_PREFERRED_LIBRARY_PREFIX}mulle-core${MULLE_PREFERRED_LIBRARY_SUFFIX}
+${MULLE_FALLBACK_LIBRARY_PREFIX}mulle-core${CMAKE_DEBUG_POSTFIX}${MULLE_FALLBACK_LIBRARY_SUFFIX}
+${MULLE_FALLBACK_LIBRARY_PREFIX}mulle-core${MULLE_FALLBACK_LIBRARY_SUFFIX}
+mulle-core
+${MULLE_PREFERRED_LIBRARY_PREFIX}dl${CMAKE_DEBUG_POSTFIX}${MULLE_PREFERRED_LIBRARY_SUFFIX}
+${MULLE_PREFERRED_LIBRARY_PREFIX}dl${MULLE_PREFERRED_LIBRARY_SUFFIX}
+${MULLE_FALLBACK_LIBRARY_PREFIX}dl${CMAKE_DEBUG_POSTFIX}${MULLE_FALLBACK_LIBRARY_SUFFIX}
+${MULLE_FALLBACK_LIBRARY_PREFIX}dl${MULLE_FALLBACK_LIBRARY_SUFFIX}
+dl")
          endif()
       endif()
    endif()
