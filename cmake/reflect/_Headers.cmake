@@ -11,38 +11,7 @@ endif()
 # contents are derived from the file locations
 
 set( INCLUDE_DIRS
-src/reflect
-src/generic
 src
-)
-
-#
-# contents selected with patternfile ??-header--private-generated-headers
-#
-set( PRIVATE_GENERATED_HEADERS
-src/reflect/_mulle-dlfcn-include-private.h
-)
-
-#
-# contents selected with patternfile ??-header--private-generic-headers
-#
-set( PRIVATE_GENERIC_HEADERS
-src/generic/include-private.h
-)
-
-#
-# contents selected with patternfile ??-header--public-generated-headers
-#
-set( PUBLIC_GENERATED_HEADERS
-src/reflect/_mulle-dlfcn-include.h
-src/reflect/_mulle-dlfcn-versioncheck.h
-)
-
-#
-# contents selected with patternfile ??-header--public-generic-headers
-#
-set( PUBLIC_GENERIC_HEADERS
-src/generic/include.h
 )
 
 #
