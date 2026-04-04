@@ -10,7 +10,7 @@
       repo="mulle-dlfcn";
       homepage="https://github.com/mulle-core/mulle-dlfcn";
       license="BSD-3-Clause";
-      version="0.0.16";
+      version="0.1.0";
    };
    dependencies =
    (
