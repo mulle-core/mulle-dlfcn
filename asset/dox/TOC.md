@@ -130,5 +130,8 @@ Notes on examples:
 
 
 ---
-Generated from public headers and README; tests/examples not present in this repository (no test/ examples found).
+Generated from public headers, README and tests.
+
+- Tests: see test/00_link/nop.c which checks linking and that dlsym(MULLE_RTLD_DEFAULT, "main") resolves.
+- Integration examples are present in the repository tests and in the header examples above.
 
