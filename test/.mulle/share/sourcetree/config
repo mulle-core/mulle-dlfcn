@@ -1,1 +1,1 @@
-mulle-dlfcn;${MULLE__DLFCN_NODETYPE:-tar};;8C2EDAEC-7003-46DA-81DA-744C7EF5C980;${MULLE__DLFCN_URL:-https://github.com/nat/mulle-dlfcn/archive/${MULLE_TAG}.tar.gz};${MULLE__DLFCN_BRANCH};${MULLE__DLFCN_TAG:-latest};;
+mulle-dlfcn;${MULLE__DLFCN_NODETYPE:-tar};;BEEB5477-7E4B-4221-802A-E9CA60698709;${MULLE__DLFCN_URL:-https://github.com/mulle-kybernetik-tv/mulle-dlfcn/archive/${MULLE_TAG}.tar.gz};${MULLE__DLFCN_BRANCH};${MULLE__DLFCN_TAG:-latest};;
