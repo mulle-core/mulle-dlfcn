@@ -19,6 +19,11 @@ On Windows this will use [dlfcn-win32]() to supply `dlsym` and relatives.
 
 
 
+## Documentation & Guides
+
+* [API Summary](asset/dox/api/toc)
+
+
 
 
 ### You are here
