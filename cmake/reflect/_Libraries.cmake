@@ -22,10 +22,18 @@ if( NOT (${CMAKE_SYSTEM_NAME} MATCHES "Windows" OR ${CMAKE_SYSTEM_NAME} MATCHES 
       list( APPEND OS_SPECIFIC_LIBRARIES "dl")
    else()
       if( NOT DL_LIBRARY)
-         find_library( DL_LIBRARY NAMES
-            dl
-            dlfcn
-         )
+         foreach( _TMP_DL_LIBRARY_TARGET dl dlfcn)
+            if( TARGET ${_TMP_DL_LIBRARY_TARGET})
+               set( DL_LIBRARY ${_TMP_DL_LIBRARY_TARGET})
+               break()
+            endif()
+         endforeach()
+         if( NOT DL_LIBRARY)
+            find_library( DL_LIBRARY NAMES
+               dl
+               dlfcn
+            )
+         endif()
          message( STATUS "DL_LIBRARY is ${DL_LIBRARY}")
          #
          # The order looks ascending, but due to the way this file is read
@@ -58,9 +66,17 @@ if( ${CMAKE_SYSTEM_NAME} MATCHES "Windows")
       list( APPEND OS_SPECIFIC_LIBRARIES "psapi")
    else()
       if( NOT PSAPI_LIBRARY)
-         find_library( PSAPI_LIBRARY NAMES
-            psapi
-         )
+         foreach( _TMP_PSAPI_LIBRARY_TARGET psapi)
+            if( TARGET ${_TMP_PSAPI_LIBRARY_TARGET})
+               set( PSAPI_LIBRARY ${_TMP_PSAPI_LIBRARY_TARGET})
+               break()
+            endif()
+         endforeach()
+         if( NOT PSAPI_LIBRARY)
+            find_library( PSAPI_LIBRARY NAMES
+               psapi
+            )
+         endif()
          message( STATUS "PSAPI_LIBRARY is ${PSAPI_LIBRARY}")
          #
          # The order looks ascending, but due to the way this file is read
