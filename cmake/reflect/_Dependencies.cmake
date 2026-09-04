@@ -115,16 +115,15 @@ if( ${CMAKE_SYSTEM_NAME} MATCHES "Windows")
             endif()
          endif()
          message( STATUS "DLFCN__WIN32_LIBRARY is ${DLFCN__WIN32_LIBRARY}")
-         #
-         # The order looks ascending, but due to the way this file is read
-         # it ends up being descending, which is what we need.
-         #
-         if( DLFCN__WIN32_LIBRARY)
+      endif()
+      if( DLFCN__WIN32_LIBRARY)
             #
             # Add DLFCN__WIN32_LIBRARY to DEPENDENCY_LIBRARIES list.
             # Disable with: `mulle-sourcetree mark dlfcn-win32 no-cmake-add`
             #
-            list( APPEND DEPENDENCY_LIBRARIES ${DLFCN__WIN32_LIBRARY})
+            if( NOT ${DLFCN__WIN32_LIBRARY} IN_LIST DEPENDENCY_LIBRARIES)
+               list( APPEND DEPENDENCY_LIBRARIES ${DLFCN__WIN32_LIBRARY})
+            endif()
             #
             # Inherit information from dependency.
             # Encompasses: no-cmake-searchpath,no-cmake-dependency,no-cmake-loader
@@ -167,9 +166,9 @@ if( ${CMAKE_SYSTEM_NAME} MATCHES "Windows")
                   message( STATUS "${_TMP_DLFCN__WIN32_DIR} not found")
                endif()
             endforeach()
-         else()
-            # Disable with: `mulle-sourcetree mark dlfcn-win32 no-require-link`
-            message( SEND_ERROR "DLFCN__WIN32_LIBRARY was not found in ${MULLE_PREFERRED_LIBRARY_PREFIX}mulle-core${CMAKE_DEBUG_POSTFIX}${MULLE_PREFERRED_LIBRARY_SUFFIX}
+      else()
+         # Disable with: `mulle-sourcetree mark dlfcn-win32 no-require-link`
+         message( SEND_ERROR "DLFCN__WIN32_LIBRARY was not found in ${MULLE_PREFERRED_LIBRARY_PREFIX}mulle-core${CMAKE_DEBUG_POSTFIX}${MULLE_PREFERRED_LIBRARY_SUFFIX}
 ${MULLE_PREFERRED_LIBRARY_PREFIX}mulle-core${MULLE_PREFERRED_LIBRARY_SUFFIX}
 ${MULLE_FALLBACK_LIBRARY_PREFIX}mulle-core${CMAKE_DEBUG_POSTFIX}${MULLE_FALLBACK_LIBRARY_SUFFIX}
 ${MULLE_FALLBACK_LIBRARY_PREFIX}mulle-core${MULLE_FALLBACK_LIBRARY_SUFFIX}
@@ -179,7 +178,6 @@ ${MULLE_PREFERRED_LIBRARY_PREFIX}dl${MULLE_PREFERRED_LIBRARY_SUFFIX}
 ${MULLE_FALLBACK_LIBRARY_PREFIX}dl${CMAKE_DEBUG_POSTFIX}${MULLE_FALLBACK_LIBRARY_SUFFIX}
 ${MULLE_FALLBACK_LIBRARY_PREFIX}dl${MULLE_FALLBACK_LIBRARY_SUFFIX}
 dl")
-         endif()
       endif()
    endif()
 endif()
