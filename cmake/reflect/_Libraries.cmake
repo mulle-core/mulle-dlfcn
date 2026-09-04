@@ -35,21 +35,19 @@ if( NOT (${CMAKE_SYSTEM_NAME} MATCHES "Windows" OR ${CMAKE_SYSTEM_NAME} MATCHES 
             )
          endif()
          message( STATUS "DL_LIBRARY is ${DL_LIBRARY}")
-         #
-         # The order looks ascending, but due to the way this file is read
-         # it ends up being descending, which is what we need.
-         #
-         if( DL_LIBRARY)
+      endif()
+      if( DL_LIBRARY)
             #
             # Add DL_LIBRARY to OS_SPECIFIC_LIBRARIES list.
             # Disable with: `mulle-sourcetree mark dl no-cmake-add`
             #
-            list( APPEND OS_SPECIFIC_LIBRARIES ${DL_LIBRARY})
+            if( NOT ${DL_LIBRARY} IN_LIST OS_SPECIFIC_LIBRARIES)
+               list( APPEND OS_SPECIFIC_LIBRARIES ${DL_LIBRARY})
+            endif()
             # intentionally left blank
-         else()
-            # Enable with: `mulle-sourcetree mark dl require`
-            message( STATUS "DL_LIBRARY is missing but it is marked as \"no-require\"")
-         endif()
+      else()
+         # Enable with: `mulle-sourcetree mark dl require`
+         message( STATUS "DL_LIBRARY is missing but it is marked as \"no-require\"")
       endif()
    endif()
 endif()
@@ -78,21 +76,19 @@ if( ${CMAKE_SYSTEM_NAME} MATCHES "Windows")
             )
          endif()
          message( STATUS "PSAPI_LIBRARY is ${PSAPI_LIBRARY}")
-         #
-         # The order looks ascending, but due to the way this file is read
-         # it ends up being descending, which is what we need.
-         #
-         if( PSAPI_LIBRARY)
+      endif()
+      if( PSAPI_LIBRARY)
             #
             # Add PSAPI_LIBRARY to OS_SPECIFIC_LIBRARIES list.
             # Disable with: `mulle-sourcetree mark psapi no-cmake-add`
             #
-            list( APPEND OS_SPECIFIC_LIBRARIES ${PSAPI_LIBRARY})
+            if( NOT ${PSAPI_LIBRARY} IN_LIST OS_SPECIFIC_LIBRARIES)
+               list( APPEND OS_SPECIFIC_LIBRARIES ${PSAPI_LIBRARY})
+            endif()
             # intentionally left blank
-         else()
-            # Enable with: `mulle-sourcetree mark psapi require`
-            message( STATUS "PSAPI_LIBRARY is missing but it is marked as \"no-require\"")
-         endif()
+      else()
+         # Enable with: `mulle-sourcetree mark psapi require`
+         message( STATUS "PSAPI_LIBRARY is missing but it is marked as \"no-require\"")
       endif()
    endif()
 endif()
