@@ -1,3 +1,13 @@
+### 0.1.3
+
+
+
+
+* `add_subdirectory` consumers now inherit this library's include directories and link libraries, so a plain `target_link_libraries(` app PRIVATE mulle-dlfcn) suffices
+* `find_package` consumers resolve dependencies by name and re-export them, fixing undefined symbols when only the library target was linked
+* whole-archive/force-link semantics are propagated to static-library consumers through an INTERFACE wrapper
+* fix header reflection filtering to match reflect directories on full path-segment boundaries, so e.g. src/reflect.glfw-metal is no longer wrongly kept
+
 ### 0.1.2
 
 
