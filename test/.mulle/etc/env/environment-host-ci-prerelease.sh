@@ -1,19 +1,19 @@
 #
-# mulle-dlfcn nodetype: ${MULLE__DLFCN_NODETYPE:-tar}
+# dlfcn-win32 nodetype: ${DLFCN__WIN32_NODETYPE:-tar}
 #
-export MULLE__DLFCN_NODETYPE="git"
+export DLFCN__WIN32_NODETYPE="git"
 
 
 #
-# mulle-dlfcn url: ${MULLE__DLFCN_URL:-https://github.com/mulle-core/mulle-dlfcn/archive/${MULLE_TAG}.tar.gz}
+# dlfcn-win32 url: ${DLFCN__WIN32_URL:-https://github.com/mulle-core/dlfcn-win32/archive/refs/tags/${MULLE_TAG}.tar.gz}
 #
-export MULLE__DLFCN_URL="https://github.com/mulle-core/mulle-dlfcn.git"
+export DLFCN__WIN32_URL="https://github.com/mulle-core/dlfcn-win32.git"
 
 
 #
-# mulle-dlfcn branch: ${MULLE__DLFCN_BRANCH}
+# dlfcn-win32 branch: ${DLFCN__WIN32_BRANCH}
 #
-export MULLE__DLFCN_BRANCH="prerelease"
+export DLFCN__WIN32_BRANCH="prerelease"
 
 
 #
@@ -35,20 +35,20 @@ export MULLE__C11_BRANCH="prerelease"
 
 
 #
-# dlfcn-win32 nodetype: ${DLFCN__WIN32_NODETYPE:-tar}
+# mulle-dlfcn nodetype: ${MULLE__DLFCN_NODETYPE:-tar}
 #
-export DLFCN__WIN32_NODETYPE="git"
+export MULLE__DLFCN_NODETYPE="git"
 
 
 #
-# dlfcn-win32 url: ${DLFCN__WIN32_URL:-https://github.com/mulle-core/dlfcn-win32/archive/refs/tags/${MULLE_TAG}.tar.gz}
+# mulle-dlfcn url: ${MULLE__DLFCN_URL:-https://github.com/mulle-core/mulle-dlfcn/archive/${MULLE_TAG}.tar.gz}
 #
-export DLFCN__WIN32_URL="https://github.com/mulle-core/dlfcn-win32.git"
+export MULLE__DLFCN_URL="https://github.com/mulle-core/mulle-dlfcn.git"
 
 
 #
-# dlfcn-win32 branch: ${DLFCN__WIN32_BRANCH}
+# mulle-dlfcn branch: ${MULLE__DLFCN_BRANCH}
 #
-export DLFCN__WIN32_BRANCH="prerelease"
+export MULLE__DLFCN_BRANCH="prerelease"
 
 
